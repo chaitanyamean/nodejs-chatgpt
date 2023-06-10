@@ -93,6 +93,7 @@ app.post("/getdata", async (req, res) => {
       result: response.data.choices[0].message.content,
     });
   } catch (e) {
-    res.send("Unable to add the Location Details");
+    console.log("ERROR", e);
+    res.send("Unable to add the Location Details", e);
   }
 });
