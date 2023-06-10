@@ -87,13 +87,16 @@ app.post("/getdata", async (req, res) => {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: input }],
     });
-    console.log(response.data.choices[0].message.content);
+    // console.log(response.data.choices[0].message.content);
 
-    res.send({
-      result: response.data.choices[0].message.content,
-    });
+    // res.send({
+    //   result: response.data.choices[0].message.content,
+    // });
+
+    res.status(200).send(response.data.choices[0].message.content.toString());
   } catch (e) {
     // console.log("ERROR", e);
-    res.send("Error occured", input);
+    // res.send("Error occured", input);
+    res.status(500).send("Error it is ");
   }
 });
