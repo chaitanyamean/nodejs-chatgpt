@@ -16,7 +16,7 @@ import readline from "readline";
 const app = express();
 
 const port = process.env.PORT || 4000;
-app.use(express.json());
+// app.use(express.json());
 // app.use(cors());
 /**
  *
@@ -93,7 +93,7 @@ app.post("/getdata", async (req, res) => {
       result: response.data.choices[0].message.content,
     });
   } catch (e) {
-    console.log("ERROR", e);
+    // console.log("ERROR", e);
     res.send("Unable to add the Location Details", e);
   }
 });
