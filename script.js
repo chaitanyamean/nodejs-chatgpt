@@ -94,6 +94,6 @@ app.post("/getdata", async (req, res) => {
     });
   } catch (e) {
     // console.log("ERROR", e);
-    res.send("Unable to add the Location Details", e);
+    res.send("Error occured", input);
   }
 });
