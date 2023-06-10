@@ -56,7 +56,7 @@ app.listen(port, () => {
 
 const openAi = new OpenAIApi(
   new Configuration({
-    apiKey: process.env.OPEN_AI_API_KEY,
+    apiKey: "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",
   })
 );
 
