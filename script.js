@@ -16,7 +16,7 @@ import readline from "readline";
 const app = express();
 
 const port = process.env.PORT || 4000;
-const API_KEY = "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";
+const API_KEY = "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";
 // app.use(express.json());
 // app.use(cors());
 /**
@@ -100,5 +100,29 @@ app.post("/getdata", async (req, res) => {
     console.log("ERROR", e);
     // res.send("Error occured", input);
     res.status(500).send("Error it is ");
+  }
+});
+
+app.get("/:id", async (req, res) => {
+  // let input = req.body.data;
+  let input = req.params.id;
+
+  console.log("LINE110", process.env.OPEN_AI_API_KEY);
+  try {
+    const response = await openAi.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: input }],
+    });
+    // console.log(response.data.choices[0].message.content);
+
+    // res.send({
+    //   result: response.data.choices[0].message.content,
+    // });
+
+    res.status(200).send(response.data.choices[0].message.content.toString());
+  } catch (e) {
+    console.log("ERROR", e);
+    // res.send("Error occured", input);
+    res.status(500).send("Error it is http://localhost:4000/getdata ");
   }
 });
